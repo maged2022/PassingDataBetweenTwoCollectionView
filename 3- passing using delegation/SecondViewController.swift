@@ -7,7 +7,7 @@
 
 import UIKit
 protocol UserInfo {
-    func userInfo(name:String,age:Int,color:UIColor)
+    func userInfo(name:String,age:Int,color:UIColor,index:Int)
 }
 
 class SecondViewController: UIViewController {
@@ -48,7 +48,7 @@ class SecondViewController: UIViewController {
     @objc
     func buttonAction() {
         print("Button pressed")
-        userInfoDelegate?.userInfo(name: "maged mohammed", age: 30, color: .green)
+       // userInfoDelegate?.userInfo(name: "maged mohammed", age: 30, color: .green)
         dismiss(animated: true, completion: nil)
     }
     
@@ -78,6 +78,7 @@ extension SecondViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! MyCollectionViewCell
+        
         myCell.myimage.image = UIImage(named: "maged")
         return myCell
     }
@@ -88,6 +89,10 @@ extension SecondViewController : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         print("User tapped on item \(indexPath.row)")
+        let index = indexPath.row
+        userInfoDelegate?.userInfo(name: "maged mohammed", age: 30, color: .yellow, index: index)
+        print(index)
+        //dismiss(animated: true, completion: nil)
     }
     
     
