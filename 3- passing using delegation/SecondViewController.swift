@@ -15,6 +15,7 @@ class SecondViewController: UIViewController {
     var userInfoDelegate:UserInfo?
     var button :UIButton!
     var label:UILabel!
+    var newVariable: String = "New Variable"
     
     var name:String?
     override func viewDidLoad() {
